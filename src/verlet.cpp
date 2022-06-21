@@ -32,7 +32,8 @@
 #include "update.h"
 
 #include <cstring>
-
+#include <stdlib.h>     
+#include <cstdlib>
 extern "C" {
   void begin_timestep_();
   void end_timestep_();
@@ -243,7 +244,16 @@ void Verlet::run(int n)
   if (atom->sortfreq > 0) sortflag = 1;
   else sortflag = 0;
 
+  const char* env_p = std::getenv("MAX_LAMMPS_STEPS")
+  long int max_steps=-1;
+  if (env_p){
+    max_steps=strtol(env_p,NULL,10)
+  }
+  li1 = strtol (szNumbers,&pEnd,10);
   for (int i = 0; i < n; i++) {
+    if (max_steps != -1 && i > max_steps){
+      break;
+    }
     begin_timestep_();
     if (timer->check_timeout(i)) {
       update->nsteps = i;
