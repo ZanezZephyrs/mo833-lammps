@@ -246,10 +246,10 @@ void Verlet::run(int n)
 
   const char* env_p = std::getenv("MAX_LAMMPS_STEPS")
   long int max_steps=-1;
+  
   if (env_p){
     max_steps=strtol(env_p,NULL,10)
   }
-  li1 = strtol (szNumbers,&pEnd,10);
   for (int i = 0; i < n; i++) {
     if (max_steps != -1 && i > max_steps){
       break;
