@@ -99,7 +99,7 @@ list(REMOVE_ITEM ALL_SOURCES ${MAIN_SOURCES})
 add_library(lammps ${ALL_SOURCES})
 
 add_executable(lmp ${MAIN_SOURCES} ../utils/obj/ifstats.o ../utils/obj/kernel_stats.o)
-add_executable(lmp ${MAIN_SOURCES})
+#add_executable(lmp ${MAIN_SOURCES})
 
 target_link_libraries(lmp PRIVATE lammps)
 set_target_properties(lmp PROPERTIES OUTPUT_NAME ${LAMMPS_BINARY})
