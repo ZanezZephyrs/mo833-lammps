@@ -248,7 +248,7 @@ void Verlet::run(int n)
   long int max_steps=-1;
 
   if (env_p){
-    max_steps=strtol(env_p,NULL,10)
+    max_steps=strtol(env_p,NULL,10);
   }
   for (int i = 0; i < n; i++) {
     if (max_steps != -1 && i > max_steps){
