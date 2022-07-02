@@ -13,7 +13,7 @@ FINAL_TIME_FILE=time.txt
 
 export MAX_LAMMPS_STEPS=$MAX_LAMMPS_STEPS
 
-mpirun -np $NUMBER_OF_NODES --hostfile $HOSTS  ../build/lmp -in $INPUT_FILE 1> ../$STDOUT_FILE 2> results.stderr || \
+mpirun -np $NUMBER_OF_NODES --hostfile $HOSTS -X MAX_LAMMPS_STEPS=$MAX_LAMMPS_STEPS  ../build/lmp -in $INPUT_FILE 1> ../$STDOUT_FILE 2> results.stderr || \
 	fail "Error when executing LAMMPS"
 	
 cat ../$STDOUT_FILE | grep "Loop time of" | cut -d " " -f 4 > ../$FINAL_TIME_FILE
