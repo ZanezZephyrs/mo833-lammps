@@ -14,4 +14,4 @@ FINAL_TIME_FILE=time.txt
 mpirun -np $NUMBER_OF_NODES --hostfile $HOSTS  ../build/lmp -in $INPUT_FILE 1> ../$STDOUT_FILE 2> results.stderr || \
 	fail "Error when executing LAMMPS"
 	
-cat ../$STDOUT_FILE | grep "Loop time of" | cut -d " " -f 4 > ../$FINAL_TIME_FILE
+cat ../$STDOUT_FILE | grep "Total time" | cut -d "," -f 2 > ../$FINAL_TIME_FILE
